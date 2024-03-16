@@ -193,19 +193,26 @@ public class Menu extends JFrame{
     }
 
     public void deleteData() {
-        // hapus data dari list
-        listMahasiswa.remove(selectedIndex);
+        // Tampilkan dialog konfirmasi
+        int confirm = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
 
-        // update tabel
-        mahasiswaTable.setModel(setTable());
+        // Jika pengguna mengonfirmasi penghapusan
+        if (confirm == JOptionPane.YES_OPTION) {
+            // Hapus data dari list
+            listMahasiswa.remove(selectedIndex);
 
-        // bersihkan form
-        clearForm();
+            // Update tabel
+            mahasiswaTable.setModel(setTable());
 
-        // feedback
-        System.out.println("Delete Berhasil!");
-        JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
+            // Bersihkan form
+            clearForm();
+
+            // Feedback
+            System.out.println("Delete Berhasil!");
+            JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
+        }
     }
+
 
     public void clearForm() {
         // kosongkan semua texfield dan combo box
